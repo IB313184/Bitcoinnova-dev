@@ -269,7 +269,7 @@ bool CryptoNoteProtocolHandler::process_payload_sync_data(const CORE_SYNC_DATA& 
 
     std::stringstream ss;
 
-    ss << "Your " << CRYPTONOTE_NAME << " node is syncing with the network ";
+    ss << "Your " << CRYPTONOTE_NAME_TEXT << " node is syncing with the network ";
 
     /* We're behind the remote node */
     if (diff >= 0)
@@ -759,7 +759,7 @@ bool CryptoNoteProtocolHandler::request_missing_objects(CryptoNoteConnectionCont
 
     context.m_state = CryptoNoteConnectionContext::state_normal;
     logger(Logging::INFO, Logging::BRIGHT_GREEN) << context << "Successfully synchronized with the "
-                                                 << CryptoNote::CRYPTONOTE_NAME << " Network.";
+                                                 << CryptoNote::CRYPTONOTE_NAME_TEXT << " Network.";
     on_connection_synchronized();
   }
   return true;
@@ -770,7 +770,7 @@ bool CryptoNoteProtocolHandler::on_connection_synchronized() {
   if (m_synchronized.compare_exchange_strong(val_expected, true)) {
     logger(Logging::INFO)
       << ENDL ;
-      logger(INFO, BRIGHT_MAGENTA) << "===[ " + std::string(CryptoNote::CRYPTONOTE_NAME) + " Tip! ]=============================" << ENDL ;
+      logger(INFO, BRIGHT_MAGENTA) << "===[ " + std::string(CryptoNote::CRYPTONOTE_NAME_TEXT) + " Tip! ]=============================" << ENDL ;
       logger(INFO, WHITE) << " Always exit " + WalletConfig::daemonName + " and " + WalletConfig::walletName + " with the \"exit\" command to preserve your chain and wallet data." << ENDL ;
       logger(INFO, WHITE) << " Use the \"help\" command to see a list of available commands." << ENDL ;
       logger(INFO, WHITE) << " Use the \"backup\" command in " + WalletConfig::walletName + " to display your keys/seed for restoring a corrupted wallet." << ENDL ;

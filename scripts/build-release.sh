@@ -71,7 +71,7 @@ function generate_tarball()
     tar --transform "s,^,$RELEASE_NAME/," -c -f $TARBALL -z -C "$CLONE_DIR/build/release/src" \
         miner \
         zedwallet \
-        TurtleCoind \
+        Bitcoinnovad \
         walletd
 
     generate_checksums $TARBALL
@@ -115,11 +115,11 @@ then
 fi
 
 # -- Config
-GITHUB_REPO="https://github.com/turtlecoin/turtlecoin.git"
-CLONE_DIR="$BUILD_DIRECTORY/turtlecoin-buildall"
-TARGET_DIR="$BUILD_DIRECTORY/turtlecoin-releases"
-DYNAMIC_RELEASE="turtlecoin-${TAG_VERSION}-linux-CLI"
-STATIC_RELEASE="turtlecoin-${TAG_VERSION}-linux-staticboost-CLI"
+GITHUB_REPO="https://github.com/BitcoinNova/bitcoinnova.git"
+CLONE_DIR="$BUILD_DIRECTORY/bitcoinnova-buildall"
+TARGET_DIR="$BUILD_DIRECTORY/bitcoinnova-releases"
+DYNAMIC_RELEASE="bitcoinnova-${TAG_VERSION}-linux-CLI"
+STATIC_RELEASE="bitcoinnova-${TAG_VERSION}-linux-staticboost-CLI"
 
 checkout_tag
 build_static_linked_version
