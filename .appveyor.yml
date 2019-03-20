@@ -24,21 +24,21 @@ after_build:
   - clcache -s
   - if not defined APPVEYOR_REPO_TAG_NAME (set APPVEYOR_REPO_TAG_NAME=%APPVEYOR_REPO_COMMIT%)
   - cd src\Release
-  - mkdir bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
-  - copy *.exe bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
-  - copy ..\..\..\LICENSE bitcoinnova-dev%APPVEYOR_REPO_TAG_NAME%
-  - 7z a bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
-  - copy bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip ..\..\..\
+  - mkdir Bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
+  - copy *.exe Bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
+  - copy ..\..\..\LICENSE Bitcoinnova-dev%APPVEYOR_REPO_TAG_NAME%
+  - 7z a Bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip Bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
+  - copy Bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip ..\..\..\
 
 artifacts:
-  - path: bitcoinnova-dev-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
-    name: bitcoinnova-dev
+  - path: Bitcoinnova-dev-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
+    name: Bitcoinnova-dev
 
 deploy:
   - provider: GitHub
     auth_token:
       secure: KFrN1rc9FJN3BEoX99whHEuK5iPHHLmDcZ1Ac7tgT9oR6AxyjL0B+XMQu4wqo+fK
-    artifact: bitcoinnova-dev
+    artifact: Bitcoinnova-dev
     draft: false
     prerelease: false
     on:
@@ -50,10 +50,10 @@ deploy:
       secure: nVmSNpabdw1WcGdTTzxAEjza8j9icu89oyXbC8fZVuM=
     secret_access_key:
       secure: TpCxPp5npMRclcwHB3dhkd9ZsEgKstS6HOnQ1VR6YObEsaPyl5dr16ZdbsOgjykj
-    bucket: bitcoinnova-dev
+    bucket: Bitcoinnova-dev
     region: us-east-2
     set_public: true
-    folder: bitcoinnova-dev
+    folder: Bitcoinnova-dev
     artifact: Bitcoinnova-dev
     on:
       appveyor_repo_name: IB313184/Bitcoinnova-dev
