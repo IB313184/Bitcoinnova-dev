@@ -27,7 +27,7 @@ after_build:
   - mkdir bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
   - copy *.exe bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
   - copy ..\..\..\LICENSE bitcoinnova-dev%APPVEYOR_REPO_TAG_NAME%
-  - 7z a bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip bitcoinnova-%APPVEYOR_REPO_TAG_NAME%
+  - 7z a bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%
   - copy bitcoinnova-dev-%APPVEYOR_REPO_TAG_NAME%-windows.zip ..\..\..\
 
 artifacts:
