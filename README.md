@@ -1,10 +1,10 @@
 ![image]((http://pool.bitcoinn.biz/bitcoin-nova.png))
 
 #### Master Build Status
-[![Build Status](https://travis-ci.org/bitcoinnova/bitcoinnova.svg?branch=master)](https://travis-ci.org/bitcoinnova/bitcoinnova) [![Build status](https://ci.appveyor.com/api/projects/status/github/bitcoinnova/bitcoinnova?branch=master&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/bitcoinnova)
+[![Build Status](https://travis-ci.org/IB313184/Bitcoinnova-dev.svg?branch=master)](https://travis-ci.org/IB313184/Bitcoinnova-dev) [![Build status](https://ci.appveyor.com/api/projects/status/github/bitcoinnova/bitcoinnova?branch=master&svg=true)](https://ci.appveyor.com/project/IB313184/Bitcoinnova-dev)
 
 #### Development Build Status
-[![Build Status](https://travis-ci.org/bitcoinnova/bitcoinnova.svg?branch=development)](https://travis-ci.org/bitcoinnova/bitcoinnova) [![Build status](https://ci.appveyor.com/api/projects/status/github/bitcoinnova/bitcoinnova?branch=development&svg=true)](https://ci.appveyor.com/project/RocksteadyTC/bitcoinnova)
+[![Build Status](https://travis-ci.org/IB313184/Bitcoinnova-dev.svg?branch=development)](https://travis-ci.org/IB313184/Bitcoinnova-dev) [![Build status](https://ci.appveyor.com/api/projects/status/github/bitcoinnova/bitcoinnova?branch=development&svg=true)](https://ci.appveyor.com/project/IB313184/Bitcoinnova-dev)
 
 ### Installing
 
