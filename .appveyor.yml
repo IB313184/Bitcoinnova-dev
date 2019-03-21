@@ -42,9 +42,8 @@ deploy:
     draft: false
     prerelease: false
     on:
-      branch: master
       appveyor_repo_name: ib313184/bitcoinnova-dev
-      appveyor_repo_tag: true
+      APPVEYOR_REPO_TAG: true
 
   - provider: S3
     access_key_id:
