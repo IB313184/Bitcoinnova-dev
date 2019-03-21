@@ -38,9 +38,10 @@ deploy:
   - provider: GitHub
     auth_token:
       secure: Et6vQSczqAYwxWaphlKbymjIB3d16tJIwEHXAjxcxDMBxF+HM4bNQEuBIlEzYfU8
-    artifact: releases
+    artifact: /.*\.zip/
     draft: false
     prerelease: false
+    tag: $(APPVEYOR_REPO_TAG_NAME)
     on:
       appveyor_repo_name: ib313184/bitcoinnova-dev
       appveyor_repo_tag: true
