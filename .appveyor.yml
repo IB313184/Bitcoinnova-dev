@@ -50,10 +50,10 @@ deploy:
       secure: nVmSNpabdw1WcGdTTzxAEjza8j9icu89oyXbC8fZVuM=
     secret_access_key:
       secure: TpCxPp5npMRclcwHB3dhkd9ZsEgKstS6HOnQ1VR6YObEsaPyl5dr16ZdbsOgjykj
-    bucket: Bitcoinnova-dev
+    bucket: bitcoinnova-dev
     region: us-east-2
     set_public: true
-    folder: Bitcoinnova-dev
+    folder: bitcoinnova-dev
     artifact: releases
     on:
       appveyor_repo_name: IB313184/Bitcoinnova-dev
