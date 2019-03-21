@@ -38,7 +38,7 @@ deploy:
   - provider: GitHub
     auth_token:
       secure: $GITHUB_API_KEY
-    artifact: BitcoinNovaRelease
+    artifact: releases
     draft: false
     prerelease: false
     on:
@@ -50,10 +50,10 @@ deploy:
       secure: nVmSNpabdw1WcGdTTzxAEjza8j9icu89oyXbC8fZVuM=
     secret_access_key:
       secure: TpCxPp5npMRclcwHB3dhkd9ZsEgKstS6HOnQ1VR6YObEsaPyl5dr16ZdbsOgjykj
-    bucket: bitcoinnova
+    bucket: Bitcoinnova-dev
     region: us-east-2
     set_public: true
-    folder: bitcoinnova
-    artifact: BitcoinNovaRelease
+    folder: Bitcoinnova-dev
+    artifact: releases
     on:
-      appveyor_repo_name: BitcoinNova/bitcoinnova
+      appveyor_repo_name: IB313184/Bitcoinnova-dev
