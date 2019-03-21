@@ -150,7 +150,7 @@ before_deploy:
 deploy:
   - provider: releases
     api_key:
-      secure: $GITHUB_API_KEY
+      secure: "M7ox8xi1IdLVugs50dU9soCBeCy7OcANBU7LIqvLWBpPgDYMxqXQeVnwvvBBawkochHHiezWpadKnZkVT7yB3Sny6VnibkpjsVML9DSvlyLudT3TDkn+WtMzVIp/PYKhnAsjAv5/zOlDhZxTzAASJ+UbhWSNz2zCxV3QEVy0DIn6MyYdAxqoio7Ahw1F6lrZxacMF2B70sphld/EbztlNC2ddXbKtHHfodUzxxOM34RGzfrsXa3fjvla5qTU3vCFugvFyiWJHVs1Ihsa/Ur3ngDd4Qj8cMiF/ivZlu82tYLeropi9yQBb7NTyxIS8GZQRhczSZF/aTTDSUVTPPduoW6kuDJrNDSIWhgRjXDlGYEDJEZLWhm/vX5pwPiyNd0x7jkqvmg3Mmv4rh9T05RSvlIw035ecQwWjvTNJkHBOsfdQKqHEfMruEorY50h4YMSPjM5hQMYtuJzeiXofoI9jr2iaoWzysrY8srwJWBLzbFkMWbhGlKRccVoxG5MsZrTRRmXqSl+O02Jf6Tw1nBTk1Pij8XwVsPW/ZycBc2d3od2Eb9/2lsyq9SHuh/A/6dmZTtlYoa7T3vOke4YqZxieAsjS11nRewmhwGtPodqGtLeD7oiJM8czIa6gIhC5p8x9QhWEsxTUJrIC3hPAaHrtLkWgNo5y4D9tpceCkk46K0="
     file:
       - bitcoinnova-${TRAVIS_TAG}-${LABEL}.tar.gz
     skip_cleanup: true
