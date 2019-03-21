@@ -1,13 +1,5 @@
 os: Visual Studio 2017
 
-configuration:
-  - release
-
-platform:
-  - x86
-  - x64
-  - ARM
-
 cache: c:\users\appveyor\clcache
 
 environment:
