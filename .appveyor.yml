@@ -40,10 +40,10 @@ deploy:
     release: bitcoinnova-dev-$(APPVEYOR_REPO_TAG_NAME)
     auth_token:
        secure: TbCxlTG7CpJC3sQnPZvOA8D6Pjff3QL73w+4UlQZy55gCYKW7jhTVUZPjr/YBKj4
-  force_update: true
-  on:
-    branch: master
-    APPVEYOR_REPO_TAG: true
+    force_update: true
+    on:
+      branch: master
+      APPVEYOR_REPO_TAG: true
 
   - provider: S3
     access_key_id:
