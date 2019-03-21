@@ -43,7 +43,7 @@ deploy:
     prerelease: false
     on:
       appveyor_repo_name: IB313184/Bitcoinnova-dev
-      appveyor_repo_tag: true
+      APPVEYOR_REPO_TAG: true
 
   - provider: S3
     access_key_id:
