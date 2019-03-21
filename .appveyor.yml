@@ -36,15 +36,14 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    auth_token:
-      secure: Et6vQSczqAYwxWaphlKbymjIB3d16tJIwEHXAjxcxDMBxF+HM4bNQEuBIlEzYfU8
-    artifact: /.*\.zip/
-    draft: false
-    prerelease: false
     tag: $(APPVEYOR_REPO_TAG_NAME)
-    on:
-      appveyor_repo_name: ib313184/bitcoinnova-dev
-      appveyor_repo_tag: true
+    release: bitcoinnova-dev-$(APPVEYOR_REPO_TAG_NAME)
+    auth_token:
+       secure: TbCxlTG7CpJC3sQnPZvOA8D6Pjff3QL73w+4UlQZy55gCYKW7jhTVUZPjr/YBKj4
+  force_update: true
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true
 
   - provider: S3
     access_key_id:
