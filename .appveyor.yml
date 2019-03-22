@@ -38,12 +38,13 @@ deploy:
   - provider: GitHub
     tag: $(APPVEYOR_REPO_TAG_NAME)
     release: bitcoinnova-dev-$(APPVEYOR_REPO_TAG_NAME)
+    description: This is the release $(APPVEYOR_REPO_TAG_NAME) of the $(REPO_NAME) addon for the NVDA screen reader built and uploaded to GitHub using Appveyor.
+
     auth_token:
-      secure: TbCxlTG7CpJC3sQnPZvOA8D6Pjff3QL73w+4UlQZy55gCYKW7jhTVUZPjr/YBKj4
-    force_update: true
+      secure: bYqY5R90YyFsf1RpeLDjHpA1cG3RpQleK5Pdcr+PQ2mPXj/3I0MrcGO06LR8ucMw
+    artifact: addon
     on:
-      branch: master
-      APPVEYOR_REPO_TAG: true
+    appveyor_repo_tag: true
 
   - provider: S3
     access_key_id:
