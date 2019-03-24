@@ -32,16 +32,17 @@ after_build:
 
 artifacts:
   - path: bitcoinnova-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
-    name: bitcoinnova
+    name: Bitcoinnova-dev
 
 deploy:
   - provider: GitHub
-    draft: true
     auth_token:
       secure: uCGpVv2IQIKfb/o3IgcJbaZ8MKY+/Qh4InuQHZAaTM2mKWa6PU+Ta4XEQZs2zG4I
-    artifact: bitcoinnova-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
+    artifact: Bitcoinnova-dev
+    draft: false
+    prerelease: false
     on:
-      branch: master
+      appveyor_repo_name: IB313184/Bitcoinnova-dev
       appveyor_repo_tag: true
    
   - provider: S3
