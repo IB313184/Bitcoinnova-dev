@@ -171,5 +171,5 @@ deploy:
     upload-dir: bitcoinnova-dev
     local-dir: src/builds
     on:
-      repo: ib313184/Bitcoinnova-dev
+      repo: ib313184/bitcoinnova-dev
       all_branches: true
