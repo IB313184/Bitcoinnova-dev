@@ -31,23 +31,17 @@ after_build:
   - copy bitcoinnova-%APPVEYOR_REPO_TAG_NAME%-windows.zip ..\..\..\
 
 artifacts:
-  - path: bitcoinnova-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
-    name: bitcoinnova
-
+  - path: bin\release\*.zip
+    
 deploy:
   - provider: GitHub
-    tag: v0.14.0
-    release: v0.14.0
     auth_token:
       secure: uCGpVv2IQIKfb/o3IgcJbaZ8MKY+/Qh4InuQHZAaTM2mKWa6PU+Ta4XEQZs2zG4I
-    draft: false
-    prerelease: false
-    repository: IB313184/Bitcoinnova-dev
-    artifact: bitcoinnova-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
-    force_update: true
+    artifact: /.*\.zip/
     on:
       branch: master
       APPVEYOR_REPO_TAG: true
+      APPVEYOR_REPO_TAG_NAME: v0.14.0
    
   - provider: S3
     access_key_id:
