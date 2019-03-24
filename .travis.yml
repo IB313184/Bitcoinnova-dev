@@ -156,7 +156,7 @@ deploy:
     skip_cleanup: true
     on:
       repo: IB313184/Bitcoinnova-dev
-      tags: true
+      tags: Release
       condition: "$_DEPLOYABLE = true"
 
   - provider: s3
