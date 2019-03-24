@@ -32,19 +32,20 @@ after_build:
 
 artifacts:
   - path: bitcoinnova-$(APPVEYOR_REPO_TAG_NAME)-windows.zip
-    name: BitcoinNova
-    
+    name: BitcoinNovaRelease
+
 deploy:
   - provider: GitHub
     auth_token:
       secure: uCGpVv2IQIKfb/o3IgcJbaZ8MKY+/Qh4InuQHZAaTM2mKWa6PU+Ta4XEQZs2zG4I
-    artifact: BitcoinNova
+    release: v0.14.0
+    artifact: BitcoinNovaRelease
     draft: false
     prerelease: false
+    force_update: true
     on:
-      APPVEYOR_REPO_TAG: true
-      APPVEYOR_REPO_TAG_NAME: v0.14.0
-   
+      branch: master
+        
   - provider: S3
     access_key_id:
       secure: nVmSNpabdw1WcGdTTzxAEjza8j9icu89oyXbC8fZVuM=
