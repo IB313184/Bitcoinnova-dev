@@ -157,8 +157,7 @@ deploy:
     on:
       repo: IB313184/Bitcoinnova-dev
       tags: true
-      branch: master
-      
+      condition: "$_DEPLOYABLE = true"
 
   - provider: s3
     access_key_id:
