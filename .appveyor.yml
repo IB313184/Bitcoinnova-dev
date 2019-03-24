@@ -38,14 +38,13 @@ deploy:
   - provider: GitHub
     auth_token:
       secure: uCGpVv2IQIKfb/o3IgcJbaZ8MKY+/Qh4InuQHZAaTM2mKWa6PU+Ta4XEQZs2zG4I
-    release: v0.14.0
     artifact: BitcoinNovaRelease
     draft: false
     prerelease: false
-    force_update: true
     on:
-      branch: master
-        
+      appveyor_repo_name: IB313184/Bitcoinnova-dev
+      appveyor_repo_tag: true
+   
   - provider: S3
     access_key_id:
       secure: nVmSNpabdw1WcGdTTzxAEjza8j9icu89oyXbC8fZVuM=
