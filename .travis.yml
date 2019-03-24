@@ -147,8 +147,6 @@ before_deploy:
 - cp bitcoinnova-${TRAVIS_TAG}-${LABEL}.tar.gz builds
 - cd ..
 - ls
-- builds
-
 
 deploy:
   - provider: releases
