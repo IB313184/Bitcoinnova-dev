@@ -46,7 +46,7 @@ RUN mkdir -p /usr/local/bin && \
     rm -rf /src/bitcoinnova 
 
 RUN apt-get remove -y build-essential python-dev gcc-7 g++-7 git cmake libboost-all-dev && \
-    apt-get autoremove -y && \
+    apt-get autoremove -y && 
 #    apt-get install -y  \
 #      libboost-system1.65.1 \
 #      libboost-filesystem1.65.1 \
