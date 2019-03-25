@@ -23,7 +23,7 @@ RUN apt-get update && \
       python-dev \
       gcc-4.9 \
       g++-4.9 \
-      git cmake \
+      git wget \
       libboost1.58-all-dev && \
     wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
     tar -xzvf cmake-3.14.0.tar.gz && \
