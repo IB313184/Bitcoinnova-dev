@@ -19,8 +19,8 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # build and install
 
 RUN add-apt-repository ppa:jonathonf/gcc-7.1 && \
-  apt-get update && \
-apt-get install gcc-7 g++-7 -y
+    apt-get update && \
+    apt-get install gcc-7 g++-7 -y
 
 RUN apt-get update && \
     apt-get install -y \
@@ -35,12 +35,13 @@ RUN apt-get update && \
     make -j$(nproc) && \
     make install && \
     cd .. && \
+    rm -rf cmake-3.14.0 && \
     git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
     git checkout $BITCOINNOVA_BRANCH && \
     mkdir build && \
     cd build && \
-    cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
+    cmake -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) && \
     mkdir -p /usr/local/bin && \
     cp src/Bitcoinnovad /usr/local/bin/Bitcoinnovad && \
