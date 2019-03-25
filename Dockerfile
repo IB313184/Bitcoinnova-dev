@@ -17,12 +17,15 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # install build dependencies
 # checkout the latest tag
 # build and install
+
+RUN add-apt-repository ppa:jonathonf/gcc-7.1 && \
+  apt-get update && \
+apt-get install gcc-7 g++-7 -y
+
 RUN apt-get update && \
     apt-get install -y \
       build-essential \
       python-dev \
-      gcc-4.9 \
-      g++-4.9 \
       git wget \
       libboost1.58-all-dev && \
     wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
@@ -31,10 +34,6 @@ RUN apt-get update && \
     ./bootstrap && \
     make -j$(nproc) && \
     make install && \
-    cd .. && \
-    git clone https://github.com/n0madic/alpine-gcc.git && \
-    cd alpine-gcc && \
-    docker build --build-arg GCC_VERSION=7.3.0 -t alpine-gcc . && \
     cd .. && \
     git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
