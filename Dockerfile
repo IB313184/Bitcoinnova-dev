@@ -2,8 +2,7 @@
 # run something like tail /var/log/bitcoinnovad/current to see the status
 # be sure to run with volumes, ie:
 # docker run -v $(pwd)/bitcoinnovad:/var/lib/bitcoinnovad -v $(pwd)/wallet:/home/bitcoinnova --rm -ti bitcoinnova:0.2.2
-ARG base_image_version=0.10.0
-FROM phusion/baseimage:$base_image_version
+FROM ubuntu:18.04
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.2.2/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
@@ -17,10 +16,6 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # install build dependencies
 # checkout the latest tag
 # build and install
-
-RUN add-apt-repository ppa:jonathonf/gcc-7.1 && \
-    apt-get update && \
-    apt-get install gcc-7 g++-7 -y
 
 RUN apt-get update && \
     apt-get install -y \
@@ -44,7 +39,7 @@ RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova &
     mkdir build && \
     cd build 
    
-RUN cmake -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
+RUN cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) 
     
 RUN mkdir -p /usr/local/bin && \
