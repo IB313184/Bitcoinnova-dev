@@ -21,23 +21,22 @@ RUN apt-get update && \
     apt-get install -y \
       build-essential \
       python-dev \
-      gcc-4.9 \
-      g++-4.9 \
+      gcc-7 \
+      g++-7 \
       git wget \
       libboost1.58-all-dev && \
     wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
     tar -xzvf cmake-3.14.0.tar.gz && \
     cd cmake-3.14.0 && \
     ./bootstrap && \
-    make && \
+    make -j$(nproc) && \
     make install && \
+    cd .. && \
     git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
     git checkout $BITCOINNOVA_BRANCH && \
     mkdir build && \
     cd build && \
-    cd .. && \
-    cd .. && \
     cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
     make -j$(nproc) && \
     mkdir -p /usr/local/bin && \
