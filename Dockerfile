@@ -20,14 +20,17 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 RUN apt-get update && \
     apt-get install -y \
       build-essential \
-      python-dev \
+      python-dev python-pip \
       git cmake \
+      aptitude \
       libboost-all-dev 
 
 RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
-    git checkout $BITCOINNOVA_BRANCH && \
-    mkdir build && \
+    
+# RUN git checkout $BITCOINNOVA_BRANCH 
+    
+RUN mkdir build && \
     cd build 
    
 RUN cmake .. && \
