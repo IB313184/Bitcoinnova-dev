@@ -32,6 +32,10 @@ RUN apt-get update && \
     make -j$(nproc) && \
     make install && \
     cd .. && \
+    git clone https://github.com/n0madic/alpine-gcc.git && \
+    cd alpine-gcc && \
+    docker build --build-arg GCC_VERSION=7.3.0 -t alpine-gcc . && \
+    cd .. && \
     git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
     git checkout $BITCOINNOVA_BRANCH && \
