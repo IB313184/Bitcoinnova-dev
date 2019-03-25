@@ -30,7 +30,7 @@ RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova &
     mkdir build && \
     cd build 
    
-RUN cmake -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
+RUN cmake .. && \
     make -j$(nproc) 
     
 RUN mkdir -p /usr/local/bin && \
