@@ -21,17 +21,8 @@ RUN apt-get update && \
     apt-get install -y \
       build-essential \
       python-dev \
-      git wget \
-      libboost1.58-all-dev 
-
-RUN wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
-    tar -xzvf cmake-3.14.0.tar.gz && \
-    cd cmake-3.14.0 && \
-    ./bootstrap && \
-    make -j$(nproc) && \
-    make install && \
-    cd .. && \
-    rm -rf cmake-3.14.0 
+      git cmake \
+      libboost-all-dev 
 
 RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
@@ -54,18 +45,18 @@ RUN mkdir -p /usr/local/bin && \
     cd / && \
     rm -rf /src/bitcoinnova 
 
-RUN apt-get remove -y build-essential python-dev gcc-4.9 g++-4.9 git cmake libboost1.58-all-dev && \
+RUN apt-get remove -y build-essential python-dev gcc-7 g++-7 git cmake libboost-all-dev && \
     apt-get autoremove -y && \
-    apt-get install -y  \
-      libboost-system1.58.0 \
-      libboost-filesystem1.58.0 \
-      libboost-thread1.58.0 \
-      libboost-date-time1.58.0 \
-      libboost-chrono1.58.0 \
-      libboost-regex1.58.0 \
-      libboost-serialization1.58.0 \
-      libboost-program-options1.58.0 \
-      libicu55
+#    apt-get install -y  \
+#      libboost-system1.65.1 \
+#      libboost-filesystem1.65.1 \
+#      libboost-thread1.65.1 \
+#      libboost-date-time1.65.1 \
+#      libboost-chrono1.65.1 \
+#      libboost-regex1.65.1 \
+#      libboost-serialization1.65.1 \
+#      libboost-program-options1.65.1 \
+#      libicu55
 
 # setup the bitcoinnovad service
 RUN useradd -r -s /usr/sbin/nologin -m -d /var/lib/bitcoinnovad bitcoinnovad && \
