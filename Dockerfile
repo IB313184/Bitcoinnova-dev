@@ -27,23 +27,27 @@ RUN apt-get update && \
       build-essential \
       python-dev \
       git wget \
-      libboost1.58-all-dev && \
-    wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
+      libboost1.58-all-dev 
+
+RUN wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
     tar -xzvf cmake-3.14.0.tar.gz && \
     cd cmake-3.14.0 && \
     ./bootstrap && \
     make -j$(nproc) && \
     make install && \
     cd .. && \
-    rm -rf cmake-3.14.0 && \
-    git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
+    rm -rf cmake-3.14.0 
+
+RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
     cd /src/bitcoinnova && \
     git checkout $BITCOINNOVA_BRANCH && \
     mkdir build && \
-    cd build && \
-    cmake -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
-    make -j$(nproc) && \
-    mkdir -p /usr/local/bin && \
+    cd build 
+   
+RUN cmake -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_CXX_FLAGS="-g0 -Os -fPIC -std=gnu++11" .. && \
+    make -j$(nproc) 
+    
+RUN mkdir -p /usr/local/bin && \
     cp src/Bitcoinnovad /usr/local/bin/Bitcoinnovad && \
     cp src/walletd /usr/local/bin/walletd && \
     cp src/zedwallet /usr/local/bin/zedwallet && \
@@ -53,8 +57,9 @@ RUN apt-get update && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
     cd / && \
-    rm -rf /src/bitcoinnova && \
-    apt-get remove -y build-essential python-dev gcc-4.9 g++-4.9 git cmake libboost1.58-all-dev && \
+    rm -rf /src/bitcoinnova 
+
+RUN apt-get remove -y build-essential python-dev gcc-4.9 g++-4.9 git cmake libboost1.58-all-dev && \
     apt-get autoremove -y && \
     apt-get install -y  \
       libboost-system1.58.0 \
