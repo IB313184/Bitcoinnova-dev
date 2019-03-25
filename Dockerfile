@@ -21,10 +21,9 @@ RUN apt-get update && \
     apt-get install -y \
       build-essential \
       python-dev \
-      gcc-7 \
-      g++-7 \
       git wget \
       libboost1.58-all-dev && \
+    apt-get -qq install -y --no-install-recommends g++-7 && \
     wget https://cmake.org/files/v3.14/cmake-3.14.0.tar.gz && \
     tar -xzvf cmake-3.14.0.tar.gz && \
     cd cmake-3.14.0 && \
