@@ -25,9 +25,10 @@ RUN apt-get update && \
       aptitude \
       libboost-all-dev 
 
-RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git bitcoinnova 
+RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git 
 
-RUN cd bitcoinnova
+RUN mv Bitcoinnova-dev bitcoinnova && \ 
+    cd bitcoinnova
     
 # RUN git checkout $BITCOINNOVA_BRANCH 
     
