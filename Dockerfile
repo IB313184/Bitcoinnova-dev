@@ -33,18 +33,6 @@ RUN TAG=$(curl -L --silent "https://api.github.com/repos/$REPO/releases/latest" 
     cmake .. && \
     make -j$(nproc)
 
-FROM keymetrics/pm2:latest-stretch 
-
-# Now we DO need these, for the auto-labeling of the image
-ARG BUILD_DATE
-ARG VCS_REF
-
-# Good docker practice, plus we get microbadger badges
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/IB313184/Bitcoinnova-dev.git" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.schema-version="2.2-r1"
-
 RUN mkdir -p /usr/local/bin
 WORKDIR /usr/local/bin
 COPY --from=builder /opt/bitcoinnova/build/src/Bitcoinnovad .
