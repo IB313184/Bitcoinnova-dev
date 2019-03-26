@@ -1,11 +1,12 @@
 os: Visual Studio 2017
-
+skip_tags: true
 cache: c:\users\appveyor\clcache
 
 environment:
   BOOST_ROOT: C:\Libraries\boost_1_67_0
   BOOST_LIBRARYDIR: C:\Libraries\boost_1_67_0\lib64-msvc-14
-
+  APPVEYOR_REPO_TAG: true
+  
 init:
   - set PATH=c:\Python37;c:\Python37\Scripts;%PATH%
   - pip install clcache
@@ -36,15 +37,16 @@ artifacts:
 
 deploy:
   - provider: GitHub
+    tag: $(APPVEYOR_REPO_TAG_NAME)
+    release: $(APPVEYOR_REPO_TAG_NAME)
     auth_token:
       secure: uCGpVv2IQIKfb/o3IgcJbaZ8MKY+/Qh4InuQHZAaTM2mKWa6PU+Ta4XEQZs2zG4I
-    force_update: true
-    skip_symbols: true
-    artifact: /.*\.zip/
+    repository: IB313184/Bitcoinnova-dev
+    artifact: BitcoinNovaRelease
     draft: false
-    prerelease: false
+    force_update: true
     on:
-      appveyor_repo_name: IB313184/Bitcoinnova-dev
+      branch: master
       appveyor_repo_tag: true
    
   - provider: S3
