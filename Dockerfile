@@ -23,13 +23,11 @@ RUN apt-get update && \
       cmake \
       libboost-all-dev
 
-RUN TAG=$(curl -L --silent "https://api.github.com/repos/$REPO/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")') && \
-    git clone --single-branch --branch $TAG https://github.com/$REPO /opt/bitcoinnova && \
+RUN git clone --single-branch --branch master https://github.com/$REPO /opt/bitcoinnova && \
     cd /opt/bitcoinnova && \
     mkdir build && \
     cd build && \
     export CXXFLAGS="-w -std=gnu++11" && \
-    #cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .. && \
     cmake .. && \
     make -j$(nproc)
 
