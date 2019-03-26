@@ -26,7 +26,7 @@ RUN apt-get update && \
       libboost-all-dev 
 
 RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git /src/bitcoinnova && \
-    cd /src/bitcoinnova && \
+    cd /src/bitcoinnova
     
 # RUN git checkout $BITCOINNOVA_BRANCH 
     
