@@ -25,19 +25,14 @@ RUN apt-get update && \
       aptitude \
       libboost-all-dev 
 
-RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git 
-
-RUN mv Bitcoinnova-dev bitcoinnova && \ 
-    cd bitcoinnova
+RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git  /bitcoinnova && \
+    cd bitcoinnova && \
+    cd build
     
 # RUN git checkout $BITCOINNOVA_BRANCH 
-    
-RUN mkdir build && \
-    cd build 
    
-RUN cmake .. 
-
-RUN make -j$(nproc) 
+RUN cmake .. && \
+    make -j$(nproc) 
     
 RUN mkdir -p /usr/local/bin && \
     cp src/Bitcoinnovad /usr/local/bin/Bitcoinnovad && \
