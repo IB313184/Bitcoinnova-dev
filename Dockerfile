@@ -23,7 +23,7 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 RUN apt update && \
     apt -y install \
     software-properties-common && \
-    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add - && \
+    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|apt-key add - && \
     add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" && \
     apt-get update && \
     apt-get install aptitude -y && \
