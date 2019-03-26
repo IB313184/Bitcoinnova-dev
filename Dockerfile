@@ -27,6 +27,7 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git  /bitcoinnova && \
     cd bitcoinnova && \
+    mkdir build && \
     cd build
     
 # RUN git checkout $BITCOINNOVA_BRANCH 
