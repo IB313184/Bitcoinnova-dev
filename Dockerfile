@@ -20,7 +20,10 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # checkout the latest tag
 # build and install
 
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+RUN apt update && \
+    apt -y install \
+    software-properties-common && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
     apt update && \
     apt-get install aptitude -y && \
     aptitude install -y \
