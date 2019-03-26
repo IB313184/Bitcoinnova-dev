@@ -28,13 +28,12 @@ RUN apt-get update && \
 RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git  /bitcoinnova && \
     cd bitcoinnova && \
     mkdir build && \
-    cd build
-    
-# RUN git checkout $BITCOINNOVA_BRANCH 
-   
-RUN cmake .. && \
+    cd build && \
+    cmake .. && \
     make -j$(nproc) 
-    
+
+# RUN git checkout $BITCOINNOVA_BRANCH 
+      
 RUN mkdir -p /usr/local/bin && \
     cp src/Bitcoinnovad /usr/local/bin/Bitcoinnovad && \
     cp src/walletd /usr/local/bin/walletd && \
