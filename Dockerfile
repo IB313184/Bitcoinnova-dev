@@ -2,7 +2,10 @@
 # run something like tail /var/log/bitcoinnovad/current to see the status
 # be sure to run with volumes, ie:
 # docker run -v $(pwd)/bitcoinnovad:/var/lib/bitcoinnovad -v $(pwd)/wallet:/home/bitcoinnova --rm -ti bitcoinnova:0.2.2
-FROM ubuntu:18.04
+#
+# Copyright (c) 2018, The Bitcoin Nova Developers 
+#
+FROM ubuntu:18.04 AS base
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.2.2/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
@@ -17,24 +20,27 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # checkout the latest tag
 # build and install
 
-RUN apt-get update && \
+RUN add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main" && \
+    apt-get update && \
     apt-get install -y \
+      -o Aptitude::ProblemResolver::SolutionCost='100*canceled-actions,200*removals' \
       build-essential \
-      python-dev python-pip \
-      git cmake \
+      clang-6.0 \
+      libstdc++-7-dev \
+      git \
+      python-pip \
       aptitude \
-      libboost-all-dev 
-
-RUN git clone https://github.com/IB313184/Bitcoinnova-dev.git  /bitcoinnova && \
+      libboost-all-dev && \
+    pip install cmake && \
+    export CC=clang-6.0 && \
+    export CXX=clang++-6.0 && \
+    git clone -b master --single-branch https://github.com/IB313184/Bitcoinnova-dev.git  /bitcoinnova && \
     cd bitcoinnova && \
     mkdir build && \
     cd build && \
     cmake .. && \
-    make -j$(nproc) 
-
-# RUN git checkout $BITCOINNOVA_BRANCH 
-      
-RUN mkdir -p /usr/local/bin && \
+    make -j$(nproc) && \
+    mkdir -p /usr/local/bin && \
     cp src/Bitcoinnovad /usr/local/bin/Bitcoinnovad && \
     cp src/walletd /usr/local/bin/walletd && \
     cp src/zedwallet /usr/local/bin/zedwallet && \
@@ -44,11 +50,10 @@ RUN mkdir -p /usr/local/bin && \
     strip /usr/local/bin/zedwallet && \
     strip /usr/local/bin/miner && \
     cd / && \
-    rm -rf /src/bitcoinnova 
-
-RUN apt-get remove -y build-essential python-dev gcc-7 g++-7 git cmake libboost-all-dev && \
+    rm -rf /src/bitcoinnova && \
+    apt-get remove -y build-essential python-dev gcc-7 g++-7 git cmake libboost-all-dev && \
     apt-get autoremove -y  
-#    apt-get install -y  \
+#   apt-get install -y  \
 #      libboost-system1.65.1 \
 #      libboost-filesystem1.65.1 \
 #      libboost-thread1.65.1 \
