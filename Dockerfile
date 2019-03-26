@@ -20,7 +20,14 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # checkout the latest tag
 # build and install
 
-RUN add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main" && \
+RUN sudo apt update && \
+    apt -y install \
+    software-properties-common \
+    dirmngr \
+    apt-transport-https \
+    lsb-release 
+    ca-certificates && \
+    add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main" && \
     apt-get update && \
     apt-get install aptitude -y && \
     aptitude install -y \
