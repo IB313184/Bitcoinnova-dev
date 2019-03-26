@@ -5,7 +5,7 @@
 #
 # Copyright (c) 2018, The Bitcoin Nova Developers 
 #
-FROM ubuntu:18.04 AS base
+FROM ubuntu:18.04 
 
 ADD https://github.com/just-containers/s6-overlay/releases/download/v1.21.2.2/s6-overlay-amd64.tar.gz /tmp/
 RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
@@ -23,7 +23,7 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 RUN apt update && \
     apt -y install \
     software-properties-common && \
-    add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main" && \
+    add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" && \
     apt-get update && \
     apt-get install aptitude -y && \
     aptitude install -y \
