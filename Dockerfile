@@ -20,24 +20,19 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 # checkout the latest tag
 # build and install
 
-RUN apt update && \
-    apt -y install \
-    software-properties-common && \
-    wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|apt-key add - && \
-    add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-8 main" && \
-    apt-get update && \
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+    apt update && \
     apt-get install aptitude -y && \
     aptitude install -y \
-      -o Aptitude::ProblemResolver::SolutionCost='100*canceled-actions,200*removals' \
       build-essential \
-      clang-6.0 \
-      libstdc++-7-dev \
+      g++-8 \
+      gcc-8 \
       git \
-      python-pip \
-      libboost-all-dev && \
+      libboost-all-dev \
+      python-pip && \
     pip install cmake && \
-    export CC=clang-6.0 && \
-    export CXX=clang++-6.0 && \
+    export CC=gcc-8 && \
+    export CXX=g++-8 && \
     git clone -b master --single-branch https://github.com/IB313184/Bitcoinnova-dev.git  /bitcoinnova && \
     cd bitcoinnova && \
     mkdir build && \
