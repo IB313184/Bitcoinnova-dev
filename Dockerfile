@@ -22,14 +22,14 @@ ENV BITCOINNOVA_BRANCH=${BITCOINNOVA_BRANCH}
 
 RUN add-apt-repository "deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic 6.0 main" && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install aptitude -y && \
+    aptitude install -y \
       -o Aptitude::ProblemResolver::SolutionCost='100*canceled-actions,200*removals' \
       build-essential \
       clang-6.0 \
       libstdc++-7-dev \
       git \
       python-pip \
-      aptitude \
       libboost-all-dev && \
     pip install cmake && \
     export CC=clang-6.0 && \
